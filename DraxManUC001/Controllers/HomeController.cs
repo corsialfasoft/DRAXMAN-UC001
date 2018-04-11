@@ -79,5 +79,28 @@ namespace DraxManUC001.Controllers
 				return View();
 			}
 		}
-	}
+		public ActionResult AddToCar(int id,int? quantita) {
+			Prodotto prodotto = dm.Search(id);
+			if (prodotto != null) {
+				if (quantita == null || quantita <= 0) {
+					ViewBag.Message = $"Inserire la quantita deve essere maggiore di 1 ";
+					ViewBag.Prodotto = prodotto;
+					return View("OrderProduct");
+				}
+				List<Prodotto> prodotti = Session["products"] as List<Prodotto>;
+				if (prodotti == null) {
+					prodotti = new List<Prodotto>();
+				}
+				if (prodotti.Contains(prodotto)) {
+					prodotti[prodotti.IndexOf(prodotto)].QtaOrdine += (int)quantita;
+				} else {
+					Prodotto aggiunto = new Prodotto { Id = id, Descrizione = prodotto.Descrizione, QtaOrdine = (int)quantita };
+					prodotti.Add(aggiunto);
+				}
+				Session["products"] = prodotti;
+				ViewBag.Message = "Elemento aggiunto al carrello";
+			} else
+				ViewBag.Message = "Prodotto non è stato trovato ";
+			return View("Ricerca");
+		}
 }

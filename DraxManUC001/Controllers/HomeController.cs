@@ -38,6 +38,7 @@ namespace DraxManUC001.Controllers
 		{
 			return View();
 		}
+
 		[HttpPost]
 		public ActionResult Ricerca(string id,string descrizione)
 		{

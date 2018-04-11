@@ -61,9 +61,9 @@ namespace DraxManUC001.Controllers
 				return View("Dettaglio");
 			}else if (descrizione !="" ){ 
 				List<Prodotto> prodotti = dm.Search(descrizione);
-				if(prodotti == null) {
+				if(prodotti.Count == 0) {
 					ViewBag.Message ="Non è stato trovato alcun prodotto che corrisponda alla descrizione";
-					return View();
+					return View("Ricerca");
 				}
 				ViewBag.Prodotti = prodotti;
 				return View("ListaProdotti");

@@ -38,7 +38,15 @@ namespace DraxManUC001.Controllers
 		{
 			return View();
 		}
-
+        [HttpPost]
+        public ActionResult AddToCar()
+		{
+			return View();
+		}
+        public ActionResult Detail()
+		{
+			return View();
+		}
 		[HttpPost]
 		public ActionResult Ricerca(string id,string descrizione)
 		{

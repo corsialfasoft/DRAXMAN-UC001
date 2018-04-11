@@ -1,7 +1,17 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Cerca";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<div class="text-warning"></div><h3>@ViewBag.Message</h3></div>
 
-<p>Use this area to provide additional information.</p>
+<h2>@ViewBag.Title.</h2>
+
+<p>Effettua la ricerca del prodotto in base al codice o alla descrizione del prodotto</p>
+<div class="container">
+    @using(Html.BeginForm("Ricerca","Home",FormMethod.Post)) {
+        <div class="row">
+            <label>Codice </label><input type="text" name="id" placeholder="Inserisci il codice" /><br />
+            <label>Descrizione</label> <input type="text" name="descrizione" placeholder="Inserisci la descrizione" />
+            <button>Cerca</button>
+        </div>
+    }
+</div>

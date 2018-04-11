@@ -96,4 +96,13 @@ namespace DraxManUC001.Controllers
 				ViewBag.Message = "Prodotto non è stato trovato ";
 			return View("Ricerca");
 		}
+		public ActionResult Carrello() {
+			List<Prodotto> list = Session["products"] as List<Prodotto>;
+			if (list != null && list.Count > 0) {
+				ViewBag.Prodotti = list;
+			} else
+				ViewBag.Message = "Non ci sono ordini";
+			return View();
+		}
+	}
 }

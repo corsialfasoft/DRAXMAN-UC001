@@ -43,9 +43,16 @@ namespace DraxManUC001.Controllers
 		{
 			return View();
 		}
-        public ActionResult Detail()
+        public ActionResult Detail(int id)
 		{
-			return View();
+            ViewBag.Prodotto = dm.Search(id);
+            if(ViewBag.Prodotto!= null){ 
+                return View("Dettaglio");   
+            }else{ 
+                ViewBag.Message = "Prodotto non torvato";  
+                return View("Ricerca");
+            }
+			
 		}
 		[HttpPost]
 		public ActionResult Ricerca(string id,string descrizione)

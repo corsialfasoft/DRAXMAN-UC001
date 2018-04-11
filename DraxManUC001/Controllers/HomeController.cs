@@ -14,20 +14,7 @@ namespace DraxManUC001.Controllers
 		{
 			return View();
 		}
-
-		public ActionResult About()
-		{
-			ViewBag.Message = "Your application description page.";
-
-			return View();
-		}
-
-		public ActionResult Contact()
-		{
-			ViewBag.Message = "Your contact page.";
-
-			return View();
-		}
+        
         public ActionResult ListaProdotti(){ 
             return View();    
         }
@@ -111,6 +98,7 @@ namespace DraxManUC001.Controllers
 			if (list != null && list.Count > 0) {
 				dm.SpedisciOrdine(list);
 				ViewBag.Message = "Ordini spediti";
+                Session["products"] = null;
 			} else
 				ViewBag.Message = "Non ci sono ordini";
 			return View("Ricerca");

@@ -63,9 +63,9 @@ namespace DraxManUC001.Controllers
 				return View("Dettaglio");
 			}else if (descrizione !="" ){ 
 				List<Prodotto> prodotti = dm.Search(descrizione);
-				if(prodotti == null) {
+				if(prodotti.Count == 0) {
 					ViewBag.Message ="Non è stato trovato alcun prodotto che corrisponda alla descrizione";
-					return View();
+					return View("Ricerca");
 				}
 				ViewBag.Prodotti = prodotti;
 				return View("ListaProdotti");
@@ -105,6 +105,27 @@ namespace DraxManUC001.Controllers
 			} else
 				ViewBag.Message = "Non ci sono ordini";
 			return View();
+		}
+		public ActionResult SpedisciOrdine(){
+			List<Prodotto> list = Session["products"] as List<Prodotto>;
+			if (list != null && list.Count > 0) {
+				dm.SpedisciOrdine(list);
+				ViewBag.Message = "Ordini spediti";
+			} else
+				ViewBag.Message = "Non ci sono ordini";
+			return View("Ricerca");
+		}
+		public ActionResult PulisciCarrello()
+		{
+			List<Prodotto> prodotti = Session["products"] as List<Prodotto>;
+			if (prodotti == null) {
+				ViewBag.Message="Il carrello è vuoto";
+				return View("Ricerca");
+				}
+			prodotti = null;
+			Session["products"] = prodotti;
+			ViewBag.MessageBox="Il carrello è stato pulito";
+			return View("Ricerca");
 		}
 	}
 }

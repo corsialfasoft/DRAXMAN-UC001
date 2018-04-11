@@ -1,12 +1,12 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Carrello";
 }
 <div class="text-warning">
     <h3>@ViewBag.Message</h3>
 </div>
 
-<h2>@ViewBag.Title.</h2>
-@if(@ViewBag.Message != null){ 
+<h2>@ViewBag.Title</h2>
+@if(@ViewBag.Message == null){ 
 <div class="container">
     <div class="row">
         <div class="col-md-4 h4">

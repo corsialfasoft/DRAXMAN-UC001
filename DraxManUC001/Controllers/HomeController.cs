@@ -72,5 +72,17 @@ namespace DraxManUC001.Controllers
 				return View();
 			}
 		}
+		public ActionResult PulisciCarrello()
+		{
+			List<Prodotto> prodotti = Session["products"] as List<Prodotto>;
+			if (prodotti == null) {
+				ViewBag.Message="Il carrello è vuoto";
+				return View("Ricerca");
+				}
+			prodotti = null;
+			Session["products"] = prodotti;
+			ViewBag.MessageBox="Il carrello è stato pulito";
+			return View("Ricerca");
+		}
 	}
 }

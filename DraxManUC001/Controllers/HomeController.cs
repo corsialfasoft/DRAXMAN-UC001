@@ -26,5 +26,11 @@ namespace DraxManUC001.Controllers
 
 			return View();
 		}
+        public ActionResult ListaProdotti(){ 
+            return View();    
+        }
+        public ActionResult Dettaglio(){ 
+            return View();        
+        }
 	}
 }

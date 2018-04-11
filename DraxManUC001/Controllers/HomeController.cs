@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DraxManUC001.Models;
 
 namespace DraxManUC001.Controllers
 {
 	public class HomeController : Controller
 	{
+		DomainModel dm=new DomainModel();
 		public ActionResult Index()
 		{
 			return View();
@@ -33,6 +35,15 @@ namespace DraxManUC001.Controllers
             return View();        
         }
 		public ActionResult Ricerca()
+		{
+			return View();
+		}
+        [HttpPost]
+        public ActionResult AddToCar()
+		{
+			return View();
+		}
+        public ActionResult Detail()
 		{
 			return View();
 		}

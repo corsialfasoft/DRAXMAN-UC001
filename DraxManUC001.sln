@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DraxManUC001", "DraxManUC00
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DraxManUC001.Tests", "DraxManUC001.Tests\DraxManUC001.Tests.csproj", "{090E38F3-AD84-4917-A582-8A15EC8C9262}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{598F19F8-6075-4165-9959-7393BAAC6A2E}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Downloads\DatabaseRichieste.sql = ..\..\..\Downloads\DatabaseRichieste.sql
+		..\..\..\Downloads\InsertProdotti.sql = ..\..\..\Downloads\InsertProdotti.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

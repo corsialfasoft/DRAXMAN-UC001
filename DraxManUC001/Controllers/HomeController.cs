@@ -111,5 +111,14 @@ namespace DraxManUC001.Controllers
 				ViewBag.Message = "Non ci sono ordini";
 			return View();
 		}
+		public ActionResult SpedisciOrdine(){
+			List<Prodotto> list = Session["products"] as List<Prodotto>;
+			if (list != null && list.Count > 0) {
+				dm.SpedisciOrdine(list);
+				ViewBag.Message = "Ordini spediti";
+			} else
+				ViewBag.Message = "Non ci sono ordini";
+			return View("Ricerca");
+		}
 	}
 }

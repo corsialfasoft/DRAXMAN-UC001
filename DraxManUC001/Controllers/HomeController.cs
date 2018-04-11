@@ -38,11 +38,6 @@ namespace DraxManUC001.Controllers
 		{
 			return View();
 		}
-        [HttpPost]
-        public ActionResult AddToCar()
-		{
-			return View();
-		}
         public ActionResult Detail(int id)
 		{
             ViewBag.Prodotto = dm.Search(id);

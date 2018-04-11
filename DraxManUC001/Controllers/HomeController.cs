@@ -38,14 +38,16 @@ namespace DraxManUC001.Controllers
 		{
 			return View();
 		}
-        [HttpPost]
-        public ActionResult AddToCar()
+        public ActionResult Detail(int id)
 		{
-			return View();
-		}
-        public ActionResult Detail()
-		{
-			return View();
+            ViewBag.Prodotto = dm.Search(id);
+            if(ViewBag.Prodotto!= null){ 
+                return View("Dettaglio");   
+            }else{ 
+                ViewBag.Message = "Prodotto non torvato";  
+                return View("Ricerca");
+            }
+			
 		}
 		[HttpPost]
 		public ActionResult Ricerca(string id,string descrizione)
@@ -94,6 +96,23 @@ namespace DraxManUC001.Controllers
 				ViewBag.Message = "Elemento aggiunto al carrello";
 			} else
 				ViewBag.Message = "Prodotto non è stato trovato ";
+			return View("Ricerca");
+		}
+		public ActionResult Carrello() {
+			List<Prodotto> list = Session["products"] as List<Prodotto>;
+			if (list != null && list.Count > 0) {
+				ViewBag.Prodotti = list;
+			} else
+				ViewBag.Message = "Non ci sono ordini";
+			return View();
+		}
+		public ActionResult SpedisciOrdine(){
+			List<Prodotto> list = Session["products"] as List<Prodotto>;
+			if (list != null && list.Count > 0) {
+				dm.SpedisciOrdine(list);
+				ViewBag.Message = "Ordini spediti";
+			} else
+				ViewBag.Message = "Non ci sono ordini";
 			return View("Ricerca");
 		}
 		public ActionResult PulisciCarrello()
